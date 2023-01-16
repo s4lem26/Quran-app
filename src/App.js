@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Navbar from "./components/Navbar";
+import Quran from "./pages/quran";
+import Surah from "./pages/Surah"
+import AudioQuran from "./pages/AudioQuran";
+import Home from "./pages/Home";
+import { ThemeContext } from "./components/ThemeContext";
+import { Routes, Route } from "react-router-dom";
 
-function App() {
+
+const App = () => {
+  const [theme, setTheme] = useState("light");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-full h-screen bg-[#383838] overflow-y-hidden">
+      <ThemeContext.Provider value={{ theme, setTheme }}>
+        <Navbar />
+        <Routes>
+          <Route path="quran" element={<Quran />}/>           
+          <Route path="/quran/:surah" element={<Surah/>}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/audioquran" element={<AudioQuran/>}/>
+        </Routes>
+      </ThemeContext.Provider>
     </div>
   );
-}
+};
 
 export default App;
