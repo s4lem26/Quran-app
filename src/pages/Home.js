@@ -62,7 +62,7 @@ const Home = () => {
           className="rounded-md text-center cursor-pointer p-6 hover:drop-shadow-md bg-[#00000025]"
         >
           <p className="text-3xl font-quran">
-            {randomayah.text || "جار التميل"} 
+            {randomayah.text || "جار التحميل"} 
             ({randomayah.numberInSurah})
           </p>
         </div>
